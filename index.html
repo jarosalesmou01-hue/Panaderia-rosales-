@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panadería Rosales · El sabor de lo artesanal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ---------- RESET & BASE ---------- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fdfaf5;
+      color: #3a2e26;
+      line-height: 1.6;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: #4a2c1a;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; height: auto; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    :root {
+      --terracota: #b35c2e;
+      --terracota-claro: #d98b5f;
+      --crema: #fdfaf5;
+      --beige: #f4e9dc;
+      --dorado-pan: #d4a259;
+      --marron-oscuro: #3a2e26;
+      --marron-medio: #6b4f3a;
+      --texto-suave: #7a6a5d;
+      --blanco: #ffffff;
+      --sombra: 0 12px 30px rgba(90, 50, 20, 0.08);
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background-color: var(--blanco);
+      box-shadow: 0 2px 20px rgba(90, 50, 20, 0.06);
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo { display: flex; align-items: center; gap: 12px; }
+
+    .logo-icono {
+      width: 55px;
+      height: 55px;
+      background: linear-gradient(135deg, var(--terracota) 0%, var(--dorado-pan) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      color: white;
+      box-shadow: 0 4px 12px rgba(179, 92, 46, 0.3);
+      flex-shrink: 0;
+    }
+
+    .logo-texto { display: flex; flex-direction: column; line-height: 1.1; }
+
+    .logo-texto .nombre {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--marron-oscuro);
+      letter-spacing: 1px;
+    }
+
+    .logo-texto .subtitulo {
+      font-size: 0.7rem;
+      color: var(--terracota);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .nav-links a {
+      color: var(--marron-medio);
+      transition: color 0.3s ease;
+      padding-bottom: 3px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--terracota);
+      border-bottom-color: var(--terracota);
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 1.6rem;
+      color: var(--marron-oscuro);
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 40px 20px;
+      background:
+        linear-gradient(rgba(45, 25, 10, 0.65), rgba(45, 25, 10, 0.55)),
+        url('https://images.pexels.com/photos/1070946/pexels-photo-1070946.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .panadero-deco {
+      position: absolute;
+      bottom: 0;
+      right: 3%;
+      font-size: 8rem;
+      opacity: 0.15;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      background-color: rgba(30, 15, 5, 0.35);
+      padding: 3.5rem 2.5rem;
+      backdrop-filter: blur(3px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background-color: var(--dorado-pan);
+      color: white;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .hero-content h1 span { color: var(--dorado-pan); font-style: italic; }
+
+    .hero-content p {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 2rem;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-botones {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--terracota);
+      color: var(--blanco);
+      padding: 14px 38px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border: 2px solid var(--terracota);
+      border-radius: 2px;
+      transition: all 0.35s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: transparent;
+      color: white;
+      border-color: white;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border-color: white;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background-color: white;
+      color: var(--marron-oscuro);
+    }
+
+    /* ---------- SECCIONES ---------- */
+    section { padding: 90px 0; }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--marron-oscuro);
+    }
+
+    .section-title span { color: var(--terracota); font-style: italic; }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--texto-suave);
+      margin-bottom: 3.5rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    /* ---------- MENÚ CATEGORÍAS ---------- */
+    .menu-categorias { background-color: var(--crema); }
+
+    .categorias-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .categoria-tab {
+      background-color: var(--blanco);
+      border: 2px solid var(--beige);
+      border-radius: 4px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: inherit;
+    }
+
+    .categoria-tab:hover {
+      border-color: var(--terracota-claro);
+      transform: translateY(-4px);
+    }
+
+    .categoria-tab.activa {
+      background-color: var(--terracota);
+      border-color: var(--terracota);
+      color: white;
+      box-shadow: 0 10px 25px rgba(179, 92, 46, 0.25);
+    }
+
+    .categoria-tab.activa .cat-nombre { color: white; }
+
+    .cat-icono { font-size: 2rem; line-height: 1; }
+
+    .cat-nombre {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--marron-oscuro);
+    }
+
+    /* ---------- GRID PRODUCTOS ---------- */
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .producto-card {
+      background-color: var(--blanco);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      animation: fadeInUp 0.5s ease both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .producto-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(90, 50, 20, 0.12);
+    }
+
+    .producto-imagen-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+    }
+
+    .producto-imagen {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .producto-card:hover .producto-imagen { transform: scale(1.08); }
+
+    .producto-etiqueta {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background-color: var(--terracota);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    .producto-info {
+      padding: 1.4rem 1.4rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .producto-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+      color: var(--marron-oscuro);
+    }
+
+    .producto-info .descripcion {
+      font-size: 0.88rem;
+      color: var(--texto-suave);
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .producto-precio-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px dashed var(--beige);
+      padding-top: 1rem;
+    }
+
+    .precio {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--terracota);
+    }
+
+    .btn-mini {
+      background-color: var(--beige);
+      color: var(--marron-medio);
+      padding: 8px 18px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .btn-mini:hover {
+      background-color: var(--terracota);
+      color: white;
+    }
+
+    /* ---------- SOBRE NOSOTROS ---------- */
+    .sobre-nosotros {
+      background: linear-gradient(135deg, #faf3ea 0%, #f5e6d3 100%);
+      padding: 90px 0;
+    }
+
+    .flex-about {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .about-imagen {
+      flex: 1 1 380px;
+      position: relative;
+    }
+
+    .about-imagen img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 20px 20px 0 var(--dorado-pan);
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background-color: var(--terracota);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 6px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(179, 92, 46, 0.3);
+    }
+
+    .about-badge .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      display: block;
+    }
+
+    .about-badge .txt {
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .about-texto { flex: 1 1 380px; }
+
+    .about-texto h3 {
+      font-size: 2.6rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+    }
+
+    .about-texto h3 span { color: var(--terracota); font-style: italic; }
+
+    .about-texto p {
+      margin-bottom: 1.2rem;
+      color: var(--marron-medio);
+      font-size: 1rem;
+    }
+
+    .about-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1 1 180px;
+    }
+
+    .feature-icono {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: var(--dorado-pan);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .feature-item span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--marron-oscuro);
+    }
+
+    /* ---------- INFO BAR ---------- */
+    .info-bar {
+      background-color: var(--marron-oscuro);
+      color: white;
+      padding: 40px 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .info-item i {
+      font-size: 1.8rem;
+      color: var(--dorado-pan);
+      margin-bottom: 0.8rem;
+    }
+
+    .info-item h4 {
+      color: white;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+    }
+
+    .info-item p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background-color: #2a1f18;
+      color: #b8a99c;
+      padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-col h4 {
+      color: var(--dorado-pan);
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .footer-col p, .footer-col li {
+      font-size: 0.88rem;
+      margin-bottom: 0.8rem;
+      color: #b8a99c;
+    }
+
+    .footer-col i {
+      color: var(--dorado-pan);
+      margin-right: 10px;
+      width: 18px;
+    }
+
+    .footer-col ul li a:hover { color: var(--dorado-pan); }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo .logo-icono {
+      width: 45px;
+      height: 45px;
+      font-size: 1.3rem;
+    }
+
+    .footer-logo .nombre {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: white;
+      font-weight: 700;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #3d2e23;
+      padding-top: 2rem;
+      font-size: 0.8rem;
+      color: #8a7a6b;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 950px) {
+      .categorias-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+        padding: 1.5rem 0 0.5rem;
+        order: 3;
+      }
+
+      .nav-links.active { display: flex; }
+      .menu-icon { display: block; }
+      .hero-content h1 { font-size: 2.8rem; }
+      .hero-content { padding: 2.5rem 1.5rem; }
+      .section-title { font-size: 2.2rem; }
+      .about-imagen img { height: 350px; }
+
+      .about-badge {
+        right: 10px;
+        bottom: -15px;
+        padding: 1rem;
+      }
+
+      .about-texto h3 { font-size: 2rem; }
+    }
+
+    @media (max-width: 500px) {
+      .hero { min-height: 80vh; }
+      .hero-content h1 { font-size: 2.1rem; }
+      .hero-content p { font-size: 1rem; }
+      .hero-botones { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 280px; text-align: center; }
+      .logo-texto .nombre { font-size: 1.2rem; }
+      .logo-texto .subtitulo { font-size: 0.6rem; letter-spacing: 2px; }
+      .logo-icono { width: 45px; height: 45px; font-size: 1.4rem; }
+      .categorias-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .cat-nombre { font-size: 0.95rem; }
+      .cat-icono { font-size: 1.6rem; }
+      .section-title { font-size: 1.9rem; }
+      .section-subtitle { font-size: 0.8rem; }
+      .panadero-deco { font-size: 5rem; }
+      .about-badge .num { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header>
+    <div class="container header-flex">
+      <div class="logo">
+        <div class="logo-icono">🥖</div>
+        <div class="logo-texto">
+          <span class="nombre">Rosales</span>
+          <span class="subtitulo">Panadería</span>
+        </div>
+      </div>
+
+      <button class="menu-icon" id="menuToggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#menu">Menú</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="inicio">
+    <div class="panadero-deco">👨‍🍳</div>
+    <div class="hero-content">
+      <span class="hero-badge">Horneado a leña · Desde 1985</span>
+      <h1>El auténtico sabor <span>de lo artesanal</span></h1>
+      <p>Pan recién horneado cada mañana en nuestros hornos tradicionales, con la receta que ha pasado por generaciones de la familia Rosales.</p>
+      <div class="hero-botones">
+        <a href="#menu" class="btn">Ver Menú</a>
+        <a href="#nosotros" class="btn btn-outline">Nuestra Historia</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MENÚ / CATEGORÍAS ================= -->
+  <section class="menu-categorias" id="menu">
+    <div class="container">
+      <h2 class="section-title">Nuestro <span>Menú</span></h2>
+      <p class="section-subtitle" id="categoriaSubtitulo">Panes recién horneados cada mañana</p>
+
+      <!-- Categorías -->
+      <div class="categorias-grid" id="categoriasGrid">
+        <button class="categoria-tab activa" data-categoria="panes">
+          <span class="cat-icono">🍞</span>
+          <span class="cat-nombre">Panes</span>
+        </button>
+        <button class="categoria-tab" data-categoria="postres">
+          <span class="cat-icono">🍰</span>
+          <span class="cat-nombre">Postres</span>
+        </button>
+        <button class="categoria-tab" data-categoria="panetones">
+          <span class="cat-icono">🎄</span>
+          <span class="cat-nombre">Panetones</span>
+        </button>
+        <button class="categoria-tab" data-categoria="bebidas">
+          <span class="cat-icono">☕</span>
+          <span class="cat-nombre">Bebidas</span>
+        </button>
+      </div>
+
+      <!-- Grid de productos -->
+      <div class="productos-grid" id="productosGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= SOBRE NOSOTROS ================= -->
+  <section class="sobre-nosotros" id="nosotros">
+    <div class="container flex-about">
+      <div class="about-imagen">
+        <img src="https://images.pexels.com/photos/1070945/pexels-photo-1070945.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Panadero trabajando la masa">
+        <div class="about-badge">
+          <span class="num">40+</span>
+          <span class="txt">Años de tradición</span>
+        </div>
+      </div>
+
+      <div class="about-texto">
+        <h3>Nuestro <span>maestro panadero</span></h3>
+        <p>Don José Rosales comenzó este sueño en 1985 con un pequeño horno de ladrillo y la receta secreta de su abuela. Hoy, su legado continúa con la misma pasión de siempre.</p>
+        <p>Cada madrugada, nuestro equipo de panaderos amasa, fermenta y hornea a leña para ofrecerte el pan más crujiente y aromático de la ciudad.</p>
+
+        <div class="about-features">
+          <div class="feature-item">
+            <div class="feature-icono"><i class="fas fa-fire"></i></div>
+            <span>Horno a leña tradicional</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icono"><i class="fas fa-seedling"></i></div>
+            <span>Ingredientes naturales</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icono"><i class="fas fa-award"></i></div>
+            <span>Recetas familiares</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icono"><i class="fas fa-clock"></i></div>
+            <span>Frescura diaria</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INFO BAR ================= -->
+  <section class="info-bar" id="contacto">
+    <div class="container info-grid">
+      <div class="info-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <h4>Dirección</h4>
+        <p>Av. Los Rosales 456, Centro</p>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-clock"></i>
+        <h4>Horario</h4>
+        <p>Lun - Dom: 6:00 am - 9:00 pm</p>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-phone-alt"></i>
+        <h4>Pedidos</h4>
+        <p>+51 987 654 321</p>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-envelope"></i>
+        <h4>Email</h4>
+        <p>hola@panaderiarosales.com</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <div class="logo-icono">🥖</div>
+            <span class="nombre">Rosales</span>
+          </div>
+          <p>Tradición y sabor en cada bocado. Horneamos con amor desde 1985.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Menú</h4>
+          <ul>
+            <li><a href="#menu" class="footer-cat" data-cat="panes">Panes</a></li>
+            <li><a href="#menu" class="footer-cat" data-cat="postres">Postres</a></li>
+            <li><a href="#menu" class="footer-cat" data-cat="panetones">Panetones</a></li>
+            <li><a href="#menu" class="footer-cat" data-cat="bebidas">Bebidas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <p><i class="fas fa-map-pin"></i> Av. Los Rosales 456</p>
+          <p><i class="fas fa-phone"></i> +51 987 654 321</p>
+          <p><i class="fas fa-envelope"></i> hola@panaderiarosales.com</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Síguenos</h4>
+          <p><i class="fab fa-facebook"></i> Panadería Rosales</p>
+          <p><i class="fab fa-instagram"></i> @panaderiarosales</p>
+          <p><i class="fab fa-whatsapp"></i> +51 987 654 321</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Panadería Rosales. Todos los derechos reservados. Hecho con ❤️ y mucha harina.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    /* ============================================================
+       1. MENÚ MÓVIL
+       ============================================================ */
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    /* ============================================================
+       2. DATOS DE CADA CATEGORÍA (con imágenes reales)
+       ============================================================ */
+    const categorias = {
+      panes: {
+        subtitulo: "Panes recién horneados cada mañana",
+        productos: [
+          {
+            nombre: "Pan Francés",
+            descripcion: "Crujiente por fuera, suave por dentro. El clásico de cada mañana.",
+            precio: "S/ 0.50",
+            etiqueta: "Favorito",
+            imagen: "https://images.pexels.com/photos/1387070/pexels-photo-1387070.jpeg?auto=compress&cs=tinysrgb&w=600"
+          },
+          {
+            nombre: "Pan de Masa Madre",
+            descripcion: "Fermentación lenta de 24 horas con corteza dorada y miga alveolada.",
+            precio: "S/ 12.00",
+            etiqueta: "Artesanal",
+            imagen: "https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600"
+          },
+          {
+            nombre: "Pan de Queso",
+            descripcion: "Suave y esponjoso, relleno de queso fresco andino.",
+            precio: "S/ 3.50",
+            etiqueta: "",
+            imagen: "https://images.pexels.com/photos/209194/pexels-photo-209194.jpeg?auto=compress&cs=tinysrgb&w=600"
+          },
+          {
+            nombre: "Pan Integral con Semillas",
+            descripcion: "Avena, linaza y chía para un desayuno saludable y nutritivo.",
+            precio: "S/ 8.00",
+            etiqueta: "Saludable",
+            imagen: "https://images.pexels.com/photos/1600711/pexels-photo-1600711.jpeg?auto=compress&cs=tinysrgb&w=600"
+          },
+          {
+            nombre: "Baguette Tradicional",
+            descripcion: "Estilo francés, perfecta para acompañar tus comidas.",
+            precio: "S/ 6.00",
+            etiqueta: "",
+            imagen: "https://images.pexels.com/photos/1387071/pexels-photo-1387071.jpeg?auto=compress&cs=tinysrgb&w=600"
+          },
+          {
+            nombre: "Pan de Yema",
+            descripcion: "Suave, dorado y ligeramente dulce. Ideal para el té.",
+            precio: "S/ 2.50",
+            etiqueta: "Tradicional",
+            imagen: "https://images.pexels.com/photos/2434/bread-food-healthy-breakfast.jpg?auto=compress&cs=tinysrgb&w=600"
+          }
+        ]
+      },
+      postres: {
+        subtitulo: "Dulces tentaciones hechas en casa",
+        productos: [
+          {
+            nombre: "Torta de Chocolate",
+            descripcion: "Bizcocho húmedo con ganache de chocolate belga.",
+            precio: "S/ 45.00",
+            etiqueta: "Más vendido",
+            imagen: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=600"
+          },
+          {
+            nombre: "Alfajores de Maicena",
+            descripcion: "Rellenos de manjar blanco y azúcar impalpable.",
+            precio: "S/ 3.00",
+            etiqueta: "",
+            imagen: "https://images.pexels.com/photos/3026808/pexels-photo-3026808.jpeg?auto=compress&cs=tinysrgb&w=600"
+          },
